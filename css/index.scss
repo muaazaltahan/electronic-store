@@ -1,0 +1,315 @@
+$light-green: #36f279;
+$cl-light-green: #3cff6b;
+$black: #0c1f0c;
+$green: #4cc173;
+$gray: #565;
+$f1: 17px;
+$f2: 21px;
+$f3: 26px;
+@font-face{
+    font-family: roots;
+    src: url('../statics/Roots.ttf');
+}
+*{
+    font-family: roots;
+}
+body{
+    margin: 0;
+    background-image: url('../statics/bg.jpg');
+    background-size: contain;
+    background-attachment: fixed;
+    background-color: #e0ffe0;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+button,input[type="submit"]{
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    font-size: inherit;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+%show{
+    color: $gray;
+    position: absolute;
+    border-radius: 0 10px 10px 0;
+    background: $cl-light-green;
+    width: 15px;
+    right: -15px;
+    font-size: $f1;
+}
+%left-items{
+    position: fixed;
+    z-index: 9;
+    left: -200px;
+    width: 200px;
+    transition: left 0.3s;
+    background: $cl-light-green;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.95;
+}
+.navigation{
+    @extend %left-items;
+    height: 40px;
+    .nav-show{
+        @extend %show;
+        top: 0;
+        height: 40px;
+    }
+    .nav-btn{
+        float: left;
+        text-align: center;
+        align-self: center;
+        width: 30%;
+        height: 100%;
+        font-size: $f1;
+        transition: background 0.2s;
+        overflow: hidden;
+        img{
+            height: 30px;
+            padding-top: 7px;
+        }
+    }
+    .nav-btn:hover{
+        background: $light-green;
+    }
+}
+.navigation:hover{
+    left: 0;
+}
+.side{
+    @extend %left-items;
+    top: 40px;
+    height: 175px;
+    .sideshow{
+        @extend %show;
+        top: 0;
+        height: 175px;
+    }
+    ul{
+        width: 100%;
+    }
+    ul li{
+        width: 100%;
+        transition: background 0.3s;
+        text-align: center;
+        font-size: $f1;
+    }
+    ul a li:hover{
+        background: $light-green;
+    }
+    ul li img{
+        height: 25px;
+    }
+}
+.logo{
+    margin-left: 20px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    img{
+        height: 60px;
+        width: 90px;
+        margin: 5px 15px;
+    }
+    .desc{
+        font-size: $f1;
+        text-align: center;
+        color: #fff;
+        text-shadow: 2px 2px 2px black;
+    }
+    .search{
+        padding: 2px;
+        border-radius: 10px;
+        transition: opacity 0.2s;
+        input[type="submit"]{
+            background: $light-green;
+            height: 30px;
+            color: $gray;
+            padding: 2px;
+            transition: background 0.2s;
+            border-radius: 10px;
+            float: right;
+        }
+        input[type="submit"]:hover{
+            background: $cl-light-green;
+        }
+        input[type="search"]{
+            height: 30px;
+            width: 72%;
+            border: none;
+            border-radius: 10px;
+        }
+    }
+}
+.container{
+    padding: 10px 18px;
+    opacity: 0.9;
+    .category-name{
+        text-align: center;
+        font-size: $f1;
+        color: #fff;
+        text-shadow: 2px 2px 2px black;
+    }
+    .product{
+        width: 90%;
+        margin: 10px auto;
+        overflow: hidden;
+        background: $green;
+        border-radius: 10px;
+        text-align: center;
+        .pd-name,.pd-amount{
+            font-size: $f1;
+            color: $gray;
+            float: left;
+            padding: 5px;
+        }
+        .pd-category,.pd-price{
+            font-size: $f1;
+            float: right;
+            padding: 5px;
+            color: $gray;
+        }
+        .pd-image{
+            max-width: 200px;
+            max-height: 200px;
+            margin-top: 10px;
+        }
+        .pd-desc{
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+        }
+        .pd-view{
+            background: #4c6aff;
+            color: #fff;
+            padding: 2px;
+            transition: background 0.2s;
+            border-radius: 10px;
+            width: 50px;
+        }
+        .pd-view:hover{
+            background: $cl-light-green;
+        }
+    }
+    .cate{
+        text-align: center;
+        font-size: $f1;
+        transition: background 0.2s;
+    }
+    .cate:hover{
+        background: radial-gradient($green ,transparent);
+    }
+    .about{
+        padding: 10px;
+        font-size: $f1; 
+    }
+}
+footer{
+    text-align: center;
+    padding: 30px 5px;
+    a{
+        text-shadow: 2px 2px 2px black;
+    }
+}
+@media screen and (min-width: 600px) {
+    %show,.container .category-name,.container .product .pd-category,.container .product .pd-price,.container .product .pd-name,.container .product .pd-amount,.container .product .pd-desc ,.side ul li,.navigation .nav-btn, .logo .desc{
+        font-size: $f2;
+    }
+    .side,.side .sideshow{
+        height: 200px;
+    }
+    .logo{
+        img{
+            width: 120px;
+            height: 80px;
+        }
+        .search{
+            padding: 5px;
+        }
+    }
+    .container {
+        .product .pd-image{
+            max-width: 300px;
+            max-height: 300px;
+            margin-top: 15px;
+        }
+        .cate{
+            font-size: $f2;
+        }
+        .about{
+            padding: 15px;
+            font-size: $f2;
+        }
+    }
+}
+@media screen and (min-width: 800px) {
+    .logo{
+        flex-direction: row;
+        img{
+            width: 150px;
+            height: 95px;
+        }
+        .search{
+            margin: 20px;
+            opacity: 0.7;
+        }
+        .search:hover{
+            opacity: 1;
+        }
+    }
+    .container {
+        .product .pd-image{
+            max-width: 400px;
+            max-height: 400px;
+            margin-top: 15px;
+        }
+    }
+    footer{
+        font-size: $f2;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .side,.side .sideshow{
+        height: 210px;
+    }
+    .logo{
+        img{
+            width: 180px;
+            height: 120px;
+        }
+        .search{
+            margin: 50px;
+        }
+    }
+    .container {
+        .category-name{
+            font-size: $f3;
+        }
+        .product .pd-image{
+            max-width: 500px;
+            max-height: 500px;
+            margin-top: 15px;
+        }
+        .cate{
+            font-size: $f3;
+        }
+        .about{
+            padding: 20px;
+            font-size: $f3;
+        }
+    }
+}
